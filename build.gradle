@@ -1,0 +1,96 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        // kotlin
+        kotlin_version = '1.3.72'
+
+        // Sdk and tools
+        application_id = "vinova.key.themoviedb"
+        compileSdkVersion = 29
+        minSdkVersion = 24
+        targetSdkVersion = 29
+
+        // Android support
+        app_compat_version = "1.1.0"
+        core_ktx_version = "1.1.0"
+        exifinterface_version = "1.0.0"
+        annotation_version = "1.1.0"
+        gson_version = "2.8.6"
+
+        // UI
+        material_version = "1.2.0-alpha01"
+        material_dialog_core_version = "3.1.1"
+        material_dialog_date_time_version = "3.1.1"
+        material_dialog_lifecycle_version = "3.1.1"
+        legacy_support_version = "1.0.0"
+        constraintlayout_version = "2.0.0-beta3"
+        vertordrawable_version = "1.1.0"
+        circel_imageviwe_version = "3.0.1"
+
+        // Navigation
+        nagvigation_version = "2.1.0"
+
+        // Architecture components
+        architecture_component_version = "2.2.0-rc01"
+
+        // Coroutines
+        coroutines_version = "1.3.0"
+
+        // Dagger2
+        dagger2_version = "2.24"
+
+        // Log
+        timber_version = "4.7.1"
+
+        // Time parser
+        threetenabp_version = "1.2.1"
+
+        // API
+        retrofit2_version = "2.6.2"
+
+        // RXJava2
+        rxjava2_version = "2.2.12"
+
+        // RxAndroid
+        rxandroid_version = "2.1.1"
+
+        // ok-http3
+        okhttp3_version = "4.2.2"
+
+        // Load Image
+        glide_version = "4.10.0"
+
+        // DB Watcher
+        db_watcher_version = "1.0.6"
+
+        // RoomDB
+        room_db_version = "2.2.1"
+
+        // JUnit4
+        junit4_version = "4.12"
+        test_runner_version = "1.2.0"
+        test_espresso_version = "3.2.0"
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
