@@ -58,9 +58,7 @@ dependencies {
     implementation "androidx.annotation:annotation:$annotation_version"
     implementation "com.google.code.gson:gson:$gson_version"
 
-    //adapter
-    implementation 'com.xwray:groupie:2.3.0'
-    implementation 'com.xwray:groupie-kotlin-android-extensions:2.3.0'
+
 
 
     // Navigation

@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.ui
+package vinova.key.themoviedb.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

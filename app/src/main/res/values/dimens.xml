@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_all_12sp">12sp</dimen>
+    <dimen name="text_size_all_14sp">14sp</dimen>
+    <dimen name="text_size_all_18sp">18sp</dimen>
+    <dimen name="text_size_all_20sp">20sp</dimen>
+    <dimen name="text_size_all_dialog_title_22sp">22sp</dimen>
+
+
+    <dimen name="margin_all_small_8dp">8dp</dimen>
+    <dimen name="margin_all_normal_16dp">16dp</dimen>
+    <dimen name="margin_all_large_20dp">20dp</dimen>
+
+    <dimen name="padding_all_small_8dp">8dp</dimen>
+    <dimen name="padding_all_normal_16dp">16dp</dimen>
+    <dimen name="padding_all_large_20dp">20dp</dimen>
+
+    <dimen name="img_btn_all_size">32dp</dimen>
+
+    <dimen name="bottom_navigation_height">56dp</dimen>
+    <dimen name="imv_size_account_100dp">100dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_view_camera_32dp">32dp</dimen>
+</resources>

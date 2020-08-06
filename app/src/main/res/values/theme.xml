@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/primaryStatusBarColor</item>
+        <item name="android:windowBackground">?backgroundColor</item>
+    </style>
+
+
+
+    <style name="AppTheme.Night">
+        <item name="colorPrimary">@color/primaryDarkColor</item>
+        <item name="colorSurface">@color/surfaceDarkColor</item>
+        <item name="colorSecondary">@color/secondaryLightColor</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+
+        <item name="colorOnPrimary">@color/secondaryTextDarkColor</item>
+        <item name="colorOnSurface">@color/surfaceTextDarkColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextDarkColor</item>
+        <item name="colorOnBackground">@color/primaryTextColor</item>
+        <item name="colorOnPrimarySurface">@color/secondaryLightColor</item>
+
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+
+        <item name="backgroundColor">@color/primaryBackgroundDarkColor</item>
+    </style>
+</resources>
