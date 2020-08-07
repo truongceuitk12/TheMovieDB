@@ -2,35 +2,36 @@ package vinova.key.themoviedb.view.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.HORIZONTAL
-import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import vinova.key.themoviedb.databinding.FragmentHomeBinding
-import vinova.key.themoviedb.model.data.Movie
-import vinova.key.themoviedb.presenter.base.IHome
+import vinova.key.themoviedb.data.model.api.MovieManager
+import vinova.key.themoviedb.data.model.data.Movie
 import vinova.key.themoviedb.view.adapter.MovieAdapter
 
 
-class HomeFragment : Fragment(), IHome.HomeView {
+class HomeFragment : Fragment(),  IHomeContact.IHomeView {
 
+    private var listMovie = mutableListOf<Movie>()
+    private var page : Int = 1
+    private val apiManager: MovieManager by lazy { MovieManager() }
+    private val compo by lazy { CompositeDisposable() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHomeBinding.inflate(inflater,container,false)
+        val binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.listener = this@HomeFragment
+        binding.lifecycleOwner = this@HomeFragment
         return binding.root
     }
 
@@ -38,22 +39,21 @@ class HomeFragment : Fragment(), IHome.HomeView {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val listFake = mutableListOf<Movie>()
-        listFake.apply {
-            add(Movie(2,4.9,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-            add(Movie(2,4.9,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-            add(Movie(2,9.0,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-            add(Movie(2,9.1,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-            add(Movie(2,9.2,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-            add(Movie(2,4.9,"Anroid 123","Hay vclllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"))
-        }
+        val movieAdapter = MovieAdapter(activity!!, listMovie)
+        compo.add(
+            apiManager.getListMovie(page).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    movieAdapter.updateData(it.results!!)
+                }, {
+                })
+        )
         home_recycler_view.run {
-            Log.d("getList", "${listFake.toString()}")
-            adapter = MovieAdapter(activity!!,listFake)
-            layoutManager = LinearLayoutManager(activity!!, VERTICAL, false)
+            adapter = movieAdapter
+            layoutManager = LinearLayoutManager(activity!!)
         }
-
     }
+
 
 
 }

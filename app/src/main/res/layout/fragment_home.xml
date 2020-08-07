@@ -3,7 +3,7 @@
     <data>
         <variable
             name="listener"
-            type="vinova.key.themoviedb.presenter.base.IHome.HomeView" />
+            type="vinova.key.themoviedb.view.home.IHomeContact.IHomeView" />
     </data>
 
 
