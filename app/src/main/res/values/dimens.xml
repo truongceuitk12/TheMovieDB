@@ -5,12 +5,13 @@
     <dimen name="text_size_all_14sp">14sp</dimen>
     <dimen name="text_size_all_18sp">18sp</dimen>
     <dimen name="text_size_all_20sp">20sp</dimen>
-    <dimen name="text_size_all_dialog_title_22sp">22sp</dimen>
+
 
 
     <dimen name="margin_all_small_8dp">8dp</dimen>
     <dimen name="margin_all_normal_16dp">16dp</dimen>
     <dimen name="margin_all_large_20dp">20dp</dimen>
+    <dimen name="margin_all_large_40dp">40dp</dimen>
 
     <dimen name="padding_all_small_8dp">8dp</dimen>
     <dimen name="padding_all_normal_16dp">16dp</dimen>

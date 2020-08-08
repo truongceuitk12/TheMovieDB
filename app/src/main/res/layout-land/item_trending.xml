@@ -15,7 +15,6 @@
         android:layout_height="0dp"
         android:src="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,8 +32,8 @@
         style="@style/App.TextAppearance.Title"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:text="âcscscscscscscs"
+        android:text="@string/sample_movie_title"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toEndOf="@id/item_imv_trending"
@@ -43,11 +42,12 @@
     <TextView
         android:id="@+id/item_tv_trending_desc"
         style="@style/App.TextAppearance"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="Desc"
+        android:layout_margin="@dimen/margin_all_large_20dp"
+        android:text="@string/sample_movie_description"
+        android:maxLines="4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toEndOf="@id/item_imv_trending"
