@@ -21,7 +21,7 @@
         <item name="colorOnBackground">@color/primaryTextColor</item>
         <item name="colorOnPrimarySurface">@color/secondaryLightColor</item>
 
-        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:navigationBarColor">@color/primaryBackgroundDarkColor</item>
         <item name="android:textColor">@color/primaryTextColor</item>
 
         <item name="backgroundColor">@color/primaryBackgroundDarkColor</item>

@@ -10,7 +10,7 @@
 
     <color name="surfaceDarkColor">#FFFFFF</color>
     <color name="surfaceTextDarkColor">#939290</color>
-    <color name="primaryStatusBarColor">#858282</color>
+    <color name="primaryStatusBarColor">#504F4F</color>
     <!--  Light  -->
     <color name="primaryLightColor">#7BC468</color>
     <color name="primaryTextColor">#D9303030</color>

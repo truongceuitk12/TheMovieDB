@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import kotlinx.android.synthetic.main.item_now_playing.view.*
 import vinova.key.themoviedb.R
 
 
@@ -15,10 +16,9 @@ fun ImageView.bindImageFromUrl(imageUrl: String?) {
     imageUrl?.let {
         Glide.with(this.context)
             .load(imageUrl)
+            .fitCenter()
             .transform(RoundedCorners(8))
             .transition(DrawableTransitionOptions.withCrossFade())
-            .fitCenter()
-            .placeholder(R.drawable.progress_animation)
             .into(this)
     }
 }

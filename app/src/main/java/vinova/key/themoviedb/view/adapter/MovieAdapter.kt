@@ -5,10 +5,7 @@ import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_now_playing.view.*
 import kotlinx.android.synthetic.main.item_trending.view.*
 import vinova.key.themoviedb.R
@@ -78,11 +75,12 @@ class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
                 item_tv_title.text = movie.title
                 item_tv_desc.text = movie.overview
             }
-            val imageUrl = if (isPortrait)
+           /* val imageUrl = if (isPortrait)
                 IMAGE_URL + movie.poster_path
             else
-                IMAGE_URL + movie.backdrop_path
-            view.item_imv_image.bindImageFromUrl(imageUrl)
+                IMAGE_URL + movie.backdrop_path*/
+            view.item_imv_image.bindImageFromUrl(IMAGE_URL + movie.poster_path)
+
         }
     }
 }
