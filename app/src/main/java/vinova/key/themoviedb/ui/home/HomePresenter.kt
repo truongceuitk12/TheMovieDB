@@ -6,11 +6,12 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import vinova.key.themoviedb.data.network.MovieManager
 import vinova.key.themoviedb.data.model.Movie
+import vinova.key.themoviedb.data.network.MovieManager
+
+import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
 import vinova.key.themoviedb.utils.LOAD
 import vinova.key.themoviedb.utils.LOAD_MORE
-import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
 
 class HomePresenter(val view: IHomeView) : IHomePresenter {
     private val listMovie = mutableListOf<Movie>()
@@ -26,8 +27,8 @@ class HomePresenter(val view: IHomeView) : IHomePresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     when (type) {
-                        LOAD -> it.let { movieAdapter.updateData(it.results!!) }
-                        LOAD_MORE -> it.let { movieAdapter.getMoreData(it.results!!) }
+                        LOAD ->  it?.let{movieAdapter.updateData(it.results!!) }
+                        LOAD_MORE -> it?.let { movieAdapter.getMoreData(it.results!!) }
                     }
                 }, {
                     Log.d("Throw", "${it}")

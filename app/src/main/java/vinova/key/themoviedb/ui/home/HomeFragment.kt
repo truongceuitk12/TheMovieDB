@@ -5,19 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.asus.week1.utils.EndlessScrollListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import vinova.key.themoviedb.R
+import vinova.key.themoviedb.data.model.Movie
+import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
+import vinova.key.themoviedb.ui.base.onItemClickListener
 import vinova.key.themoviedb.utils.LOAD
+import vinova.key.themoviedb.utils.LOAD_MORE
+import vinova.key.themoviedb.utils.PAGE_DEFAULT
 
 
 class HomeFragment : Fragment(), IHomeView {
     var position = 0
-    private var mLayoutManager: LinearLayoutManager? = null
-    private val page = 1
+    var mLayoutManager: LinearLayoutManager? = null
+    private var page = 1
+    private lateinit var movieAdapter: MovieAdapter
     val homePresenter = HomePresenter(this)
 
     override fun onCreateView(
@@ -30,47 +36,63 @@ class HomeFragment : Fragment(), IHomeView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpRecyclerView(LOAD)
+        setUpRecyclerView(PAGE_DEFAULT, LOAD)
+        onLoadMore()
         onRefresh()
+
     }
 
     override fun onRefresh() {
         home_lo_is_refresh.setOnRefreshListener {
             position = 0
             home_lo_is_refresh.isRefreshing = true
-            setUpRecyclerView(LOAD)
+            setUpRecyclerView(PAGE_DEFAULT, LOAD)
             home_lo_is_refresh.isRefreshing = false
         }
     }
 
-    override fun setUpRecyclerView(type: Int) {
+    override fun setUpRecyclerView(page: Int, type: Int) {
         mLayoutManager = LinearLayoutManager(activity!!)
+        movieAdapter = homePresenter.getData(activity!!, page, type)
         home_recycler_view.run {
-            adapter = homePresenter.getData(activity!!, page, LOAD)
+            adapter = movieAdapter
             layoutManager = mLayoutManager
             setHasFixedSize(true)
+
+
         }
+
+        movieAdapter.setItemClickListener(object : onItemClickListener {
+            override fun onItemClick(item: Movie) {
+                val bundle = Bundle()
+                bundle.putParcelable("item",item)
+                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment,bundle)
+            }
+        })
+
     }
+
 
     override fun onLoadMore() {
-        page.plus(1)
-        var scrollListener = object : EndlessScrollListener(mLayoutManager!!,1) {
+        page++
+        home_recycler_view.addOnScrollListener(object : EndlessScrollListener(mLayoutManager!!, 1) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-               // homePresenter.getData(page)
+                setUpRecyclerView(page, LOAD_MORE)
             }
-        }
-        home_recycler_view.apply {
-            addOnScrollListener(scrollListener)
 
-        }
+        })
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt("POSITION", mLayoutManager!!.findFirstCompletelyVisibleItemPosition())
         super.onSaveInstanceState(outState)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
 
+    }
 
 
 }

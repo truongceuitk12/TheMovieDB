@@ -70,6 +70,11 @@ buildscript {
         junit4_version = "4.12"
         test_runner_version = "1.2.0"
         test_espresso_version = "3.2.0"
+        //update
+        swipe_version = "1.0.0"
+        recycler_version = "1.1.0"
+        animator_version = "2.2.3"
+        legacy_version = "1.0.0"
     }
     repositories {
         google()

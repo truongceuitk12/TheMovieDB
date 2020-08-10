@@ -1,8 +1,6 @@
-package com.example.asus.week1.utils
+package vinova.key.themoviedb.ui.base
 
-import android.view.View
 import vinova.key.themoviedb.data.model.Movie
-
 
 interface onItemClickListener{
     fun onItemClick(item: Movie)

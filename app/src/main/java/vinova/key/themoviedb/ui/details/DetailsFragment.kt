@@ -13,17 +13,13 @@ import vinova.key.themoviedb.data.model.Movie
 import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
 
 
-class DetailsFragment() : Fragment(), IDetailsView {
-
-    private var movieList = mutableListOf<Movie>()
-    private lateinit var movieAdapter : MovieAdapter
-
-    private var presenter: IDetailsPresenter? = null
+class DetailsFragment() : Fragment(){
 
 
-    override fun setPresenter(presenter: IDetailsPresenter) {
-        this.presenter = presenter
-    }
+
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,25 +33,11 @@ class DetailsFragment() : Fragment(), IDetailsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter = DetailsPresenter(activity!!, this)
-        presenter?.getData(1)
-
 
 
     }
 
-    override fun showData(movies: MutableList<Movie>) {
-        if(movies.isNullOrEmpty()) return
-        if(movieList.isNullOrEmpty()) movieList.addAll(movies)
-        Log.d("Results1" , "${movieList}")
-        movieAdapter = MovieAdapter(activity!!,movieList)
-        detail_recycler_view.run {
-            adapter = movieAdapter
-            layoutManager = LinearLayoutManager(activity!!)
-        }
 
-
-    }
 
 
 }

@@ -8,3 +8,4 @@ const val REGULAR  =  0
 const val POPULARITY_THRESHOLD = 7.0
 const val LOAD = 1
 const val LOAD_MORE = 2
+const val PAGE_DEFAULT = 1
