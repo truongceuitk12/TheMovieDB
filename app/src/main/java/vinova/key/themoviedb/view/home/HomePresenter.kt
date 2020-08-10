@@ -8,27 +8,28 @@ import vinova.key.themoviedb.data.model.api.MovieManager
 import vinova.key.themoviedb.data.model.data.Movie
 import vinova.key.themoviedb.view.adapter.MovieAdapter
 
-class HomePresenter(val context: Context) : IHomePresenter {
+class HomePresenter() {
 
-    private var listMovie = mutableListOf<Movie>()
-    private var page: Int = 1
-    private val apiManager: MovieManager by lazy { MovieManager() }
-    private val compo by lazy { CompositeDisposable() }
 
-    override fun getData(): MovieAdapter {
-        val movieAdapter = MovieAdapter(context,listMovie )
+    fun getData( context: Context): MovieAdapter {
+        val listMovie = mutableListOf<Movie>()
+        val movieAdapter = MovieAdapter(context, listMovie)
+        val page: Int = 1
+        val apiManager: MovieManager by lazy { MovieManager() }
+        val compo by lazy { CompositeDisposable() }
         compo.add(
             apiManager.getListMovie(page).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     movieAdapter.updateData(it.results!!)
-
                 }, {
                 })
         )
         return movieAdapter
     }
-
+    fun onLoadMore(){
+        
+    }
 
 
 }

@@ -75,10 +75,7 @@ class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
                 item_tv_title.text = movie.title
                 item_tv_desc.text = movie.overview
             }
-           /* val imageUrl = if (isPortrait)
-                IMAGE_URL + movie.poster_path
-            else
-                IMAGE_URL + movie.backdrop_path*/
+
             view.item_imv_image.bindImageFromUrl(IMAGE_URL + movie.poster_path)
 
         }

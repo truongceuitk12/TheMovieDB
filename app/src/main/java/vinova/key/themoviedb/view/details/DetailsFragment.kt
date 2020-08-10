@@ -1,38 +1,59 @@
 package vinova.key.themoviedb.view.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_details.*
 import vinova.key.themoviedb.R
+import vinova.key.themoviedb.data.model.data.Movie
+import vinova.key.themoviedb.view.adapter.MovieAdapter
 
 
-@Suppress("UNREACHABLE_CODE")
-class DetailsFragment : Fragment() {
+class DetailsFragment() : Fragment(), IDetailsView {
+    val listMovie = mutableListOf<Movie>()
+    val movieAdapter = MovieAdapter(context!!, listMovie)
+    private val movies = mutableListOf<Movie>()
+//    private var presenter: IDetailsPresenter = DetailsPresenter(activity!!, this)
+    private var presenter: IDetailsPresenter? = null
 
+//    init {
+//
+//    }
+
+    override fun setPresenter(presenter: IDetailsPresenter) {
+        this.presenter = presenter
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        presenter = DetailsPresenter(activity!!, this)
         return inflater.inflate(R.layout.fragment_details, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val presenter  = DetailsPresenter(activity!!)
-        button.setOnClickListener {
-            presenter.handleClick()
-            findNavController().navigate(R.id.action_detailsFragment_to_homeFragment)
+        presenter?.getData(1)
+
+        dt.run {
+            adapter = movieAdapter
+            layoutManager = LinearLayoutManager(activity!!)
         }
 
 
+    }
+
+    override fun showData(movies: MutableList<Movie>) {
+        movieAdapter.updateData(movies)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 
