@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.data.model.api
+package vinova.key.themoviedb.data.api
 
 import io.reactivex.Single
 import retrofit2.Call
@@ -6,7 +6,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import vinova.key.themoviedb.data.model.data.MovieList
+import vinova.key.themoviedb.data.model.MovieList
 import vinova.key.themoviedb.utils.BASE_URL
 
 class MovieManager {

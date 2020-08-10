@@ -1,11 +1,12 @@
-package vinova.key.themoviedb.view.details
+package vinova.key.themoviedb.ui.details
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import vinova.key.themoviedb.data.model.api.MovieManager
+import vinova.key.themoviedb.data.api.MovieManager
 
 class DetailsPresenter(val context: Context, val v: IDetailsView) : IDetailsPresenter {
     override fun handleClick() {
@@ -19,8 +20,12 @@ class DetailsPresenter(val context: Context, val v: IDetailsView) : IDetailsPres
             apiManager.getListMovie(page).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    v.showData(it.results!!)
+                    if (it.results != null) {
+                        Log.d("Results", "${it.results}")
+                        v.showData(it.results)
+                    }
                 }, {
+                    Log.d("Throw", "${it}")
                 })
         )
     }

@@ -6,3 +6,5 @@ const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 const val TRENDING = 1
 const val REGULAR  =  0
 const val POPULARITY_THRESHOLD = 7.0
+const val LOAD = 1
+const val LOAD_MORE = 2

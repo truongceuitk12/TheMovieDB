@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.view.details
+package vinova.key.themoviedb.ui.details
 
 interface IDetailsPresenter {
     fun handleClick()

@@ -1,9 +1,9 @@
-package vinova.key.themoviedb.data.model.api
+package vinova.key.themoviedb.data.api
 
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import vinova.key.themoviedb.data.model.data.MovieList
+import vinova.key.themoviedb.data.model.MovieList
 import vinova.key.themoviedb.utils.API_KEY
 
 interface MovieService {

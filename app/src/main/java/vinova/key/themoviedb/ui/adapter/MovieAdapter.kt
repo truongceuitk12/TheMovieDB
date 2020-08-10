@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.view.adapter
+package vinova.key.themoviedb.ui.adapter
 
 import android.content.Context
 import android.content.res.Configuration
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_now_playing.view.*
 import kotlinx.android.synthetic.main.item_trending.view.*
 import vinova.key.themoviedb.R
-import vinova.key.themoviedb.data.model.data.Movie
+import vinova.key.themoviedb.data.model.Movie
 import vinova.key.themoviedb.utils.*
 
 class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
@@ -34,7 +34,13 @@ class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
 
 
     fun updateData(newMovies: MutableList<Movie>) {
+
         movies = newMovies
+        notifyDataSetChanged()
+    }
+
+    fun getMoreData(newPage: MutableList<Movie>) {
+        movies.addAll(newPage)
         notifyDataSetChanged()
     }
 
@@ -75,9 +81,7 @@ class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
                 item_tv_title.text = movie.title
                 item_tv_desc.text = movie.overview
             }
-
             view.item_imv_image.bindImageFromUrl(IMAGE_URL + movie.poster_path)
-
         }
     }
 }

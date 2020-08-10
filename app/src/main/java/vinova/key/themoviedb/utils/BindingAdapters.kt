@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.item_now_playing.view.*
 import vinova.key.themoviedb.R
 
 
-// region Common
 
 @BindingAdapter("android:imageUrl")
 fun ImageView.bindImageFromUrl(imageUrl: String?) {

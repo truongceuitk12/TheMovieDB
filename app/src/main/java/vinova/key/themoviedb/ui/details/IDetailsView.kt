@@ -1,6 +1,6 @@
-package vinova.key.themoviedb.view.details
+package vinova.key.themoviedb.ui.details
 
-import vinova.key.themoviedb.data.model.data.Movie
+import vinova.key.themoviedb.data.model.Movie
 
 interface IDetailsView {
     fun setPresenter(presenter: IDetailsPresenter)

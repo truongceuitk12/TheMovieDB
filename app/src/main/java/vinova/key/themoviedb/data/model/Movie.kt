@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.data.model.data
+package vinova.key.themoviedb.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
