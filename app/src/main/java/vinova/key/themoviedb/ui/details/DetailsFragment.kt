@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_details.*
 import vinova.key.themoviedb.R
 import vinova.key.themoviedb.data.model.Movie
-import vinova.key.themoviedb.ui.adapter.MovieAdapter
+import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
 
 
 class DetailsFragment() : Fragment(), IDetailsView {

@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.data.api
+package vinova.key.themoviedb.data.network
 
 import retrofit2.Call
 import retrofit2.http.GET

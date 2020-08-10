@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.ui.adapter
+package vinova.key.themoviedb.ui.base.adapter
 
 import android.content.Context
 import android.content.res.Configuration
@@ -12,7 +12,7 @@ import vinova.key.themoviedb.R
 import vinova.key.themoviedb.data.model.Movie
 import vinova.key.themoviedb.utils.*
 
-class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
+class MovieAdapter(private val context: Context, private var movies: MutableList<Movie>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -84,4 +84,5 @@ class MovieAdapter(val context: Context, var movies: MutableList<Movie>) :
             view.item_imv_image.bindImageFromUrl(IMAGE_URL + movie.poster_path)
         }
     }
+    
 }

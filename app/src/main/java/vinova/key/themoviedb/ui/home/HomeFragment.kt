@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.asus.week1.utils.EndlessScrollListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import vinova.key.themoviedb.R
 import vinova.key.themoviedb.utils.LOAD
@@ -22,25 +24,23 @@ class HomeFragment : Fragment(), IHomeView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        savedInstanceState?.let { position = savedInstanceState.getInt("POSITION") }
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpRecyclerView(LOAD)
         onRefresh()
-
     }
 
     override fun onRefresh() {
-        home_lo_is_refresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                home_lo_is_refresh.isRefreshing = true
-                setUpRecyclerView(1)
-                home_lo_is_refresh.isRefreshing = false
-            }
-        })
+        home_lo_is_refresh.setOnRefreshListener {
+            position = 0
+            home_lo_is_refresh.isRefreshing = true
+            setUpRecyclerView(LOAD)
+            home_lo_is_refresh.isRefreshing = false
+        }
     }
 
     override fun setUpRecyclerView(type: Int) {
@@ -53,20 +53,24 @@ class HomeFragment : Fragment(), IHomeView {
     }
 
     override fun onLoadMore() {
-       /* page.plus(1)
-        home_recycler_view.addOnScrollListener(object : RecyclerView.End
-        )*/
+        page.plus(1)
+        var scrollListener = object : EndlessScrollListener(mLayoutManager!!,1) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+               // homePresenter.getData(page)
+            }
+        }
+        home_recycler_view.apply {
+            addOnScrollListener(scrollListener)
+
+        }
     }
 
-    /*override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt("POSITION", mLayoutManager?.findFirstCompletelyVisibleItemPosition()!!)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("POSITION", mLayoutManager!!.findFirstCompletelyVisibleItemPosition())
         super.onSaveInstanceState(outState)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        position= savedInstanceState?.getInt("POSITION")!!
-        super.onViewStateRestored(savedInstanceState)
-    }*/
+
 
 
 }

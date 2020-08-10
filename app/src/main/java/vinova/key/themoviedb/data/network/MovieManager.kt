@@ -1,4 +1,4 @@
-package vinova.key.themoviedb.data.api
+package vinova.key.themoviedb.data.network
 
 import io.reactivex.Single
 import retrofit2.Call

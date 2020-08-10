@@ -6,7 +6,7 @@ import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import vinova.key.themoviedb.data.api.MovieManager
+import vinova.key.themoviedb.data.network.MovieManager
 
 class DetailsPresenter(val context: Context, val v: IDetailsView) : IDetailsPresenter {
     override fun handleClick() {
