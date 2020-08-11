@@ -20,8 +20,9 @@
                 android:id="@+id/detail_view_movie_player"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                app:videoId="O6mizTWwmTQ"
+                app:videoId=""
                 app:autoPlay="true"
+                app:showFullScreenButton="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

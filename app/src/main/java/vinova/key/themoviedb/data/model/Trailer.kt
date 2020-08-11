@@ -8,7 +8,7 @@ data class Trailer(
 
     val quicktime: List<Any>?,
 
-    val youtube: ArrayList<Youtube>?
+    val youtube: MutableList<Youtube>?
 )
 
 @Parcelize
