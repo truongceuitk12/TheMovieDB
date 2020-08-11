@@ -13,7 +13,7 @@ import vinova.key.themoviedb.ui.base.adapter.MovieAdapter
 import vinova.key.themoviedb.utils.LOAD
 import vinova.key.themoviedb.utils.LOAD_MORE
 
-class HomePresenter(val view: IHomeView) : IHomePresenter {
+class HomePresenter(var view: IHomeView) : IHomePresenter {
     private val listMovie = mutableListOf<Movie>()
     private val apiManager: MovieManager by lazy { MovieManager() }
     private val compo by lazy { CompositeDisposable() }
@@ -36,6 +36,7 @@ class HomePresenter(val view: IHomeView) : IHomePresenter {
         )
         return movieAdapter
     }
+
 
 
 
