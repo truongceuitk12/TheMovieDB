@@ -6,6 +6,10 @@
         <item name="android:statusBarColor">@color/primaryStatusBarColor</item>
         <item name="android:windowBackground">?backgroundColor</item>
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#C7C7C7</item>
+        <item name="colorControlActivated">#FDC723</item>
+    </style>
 
 
 

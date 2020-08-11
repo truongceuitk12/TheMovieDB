@@ -9,5 +9,10 @@
         <item name= "android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_size_all_14sp</item>
     </style>
+    <style name="App.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/img_btn_all_size</item>
+        <item name="android:layout_height">@dimen/img_btn_all_size</item>
+        <item name="android:background">@drawable/md_img_btn_selector</item>
+    </style>
 
 </resources>

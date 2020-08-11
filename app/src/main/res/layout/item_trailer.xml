@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.youtube.player.YouTubeThumbnailView
+        android:id="@+id/videoThumbnailImageView"
+        android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:id="@+id/tv_title_trailer"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/sample_movie_title"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>

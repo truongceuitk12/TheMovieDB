@@ -23,12 +23,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
-    }
+
 
     androidExtensions {
         experimental = true
+    }
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -57,7 +59,9 @@ dependencies {
     implementation "androidx.exifinterface:exifinterface:$exifinterface_version"
     implementation "androidx.annotation:annotation:$annotation_version"
     implementation "com.google.code.gson:gson:$gson_version"
+    //youtube
 
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'
 
 
 

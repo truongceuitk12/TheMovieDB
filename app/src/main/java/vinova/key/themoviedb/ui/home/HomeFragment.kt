@@ -22,7 +22,6 @@ import vinova.key.themoviedb.utils.PAGE_DEFAULT
 class HomeFragment : Fragment(), IHomeView {
     var position = 0
     var mLayoutManager: LinearLayoutManager? = null
-    private var page = 1
     private lateinit var movieAdapter: MovieAdapter
     val homePresenter = HomePresenter(this)
 
@@ -58,15 +57,13 @@ class HomeFragment : Fragment(), IHomeView {
             adapter = movieAdapter
             layoutManager = mLayoutManager
             setHasFixedSize(true)
-
-
         }
 
         movieAdapter.setItemClickListener(object : onItemClickListener {
             override fun onItemClick(item: Movie) {
                 val bundle = Bundle()
-                bundle.putParcelable("item",item)
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment,bundle)
+                bundle.putParcelable("movie", item)
+                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
             }
         })
 
@@ -74,12 +71,11 @@ class HomeFragment : Fragment(), IHomeView {
 
 
     override fun onLoadMore() {
-        page++
+        mLayoutManager = LinearLayoutManager(activity!!)
         home_recycler_view.addOnScrollListener(object : EndlessScrollListener(mLayoutManager!!, 1) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 setUpRecyclerView(page, LOAD_MORE)
             }
-
         })
     }
 
@@ -91,7 +87,6 @@ class HomeFragment : Fragment(), IHomeView {
 
     override fun onDestroy() {
         super.onDestroy()
-
     }
 
 

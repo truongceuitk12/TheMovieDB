@@ -13,16 +13,16 @@ class DetailsPresenter(val context: Context, val v: IDetailsView) : IDetailsPres
         Toast.makeText(context, "abccccc", Toast.LENGTH_LONG).show()
     }
 
-    override fun getData(page: Int) {
+    override fun getData(id: Int) {
         val apiManager: MovieManager by lazy { MovieManager() }
         val compo by lazy { CompositeDisposable() }
         compo.add(
-            apiManager.getListMovie(page).subscribeOn(Schedulers.io())
+            apiManager.getTrailerInfor(id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    if (it.results != null) {
-                        Log.d("Results", "${it.results}")
-                        v.showData(it.results)
+                    if (it.youtube != null) {
+                        Log.d("Results", "${it.youtube}")
+                       // v.showData(it.youtube)
                     }
                 }, {
                     Log.d("Throw", "${it}")

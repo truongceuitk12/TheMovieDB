@@ -7,6 +7,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import vinova.key.themoviedb.data.model.MovieList
+import vinova.key.themoviedb.data.model.Trailer
 import vinova.key.themoviedb.utils.BASE_URL
 
 class MovieManager {
@@ -51,5 +52,8 @@ class MovieManager {
 
     fun getListMovie(page: Int= 1): Single<MovieList> {
         return buildRequest(_apiRestFull.getListMovie(page = page))
+    }
+    fun getTrailerInfor(id: Int): Single<Trailer> {
+        return buildRequest(_apiRestFull.getMovieInforVideo(id))
     }
 }

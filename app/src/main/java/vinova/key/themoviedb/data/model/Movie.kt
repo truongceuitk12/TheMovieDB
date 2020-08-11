@@ -18,7 +18,7 @@ data class Dates(
 
 @Parcelize
 data class Movie(
-
+    val id: Int?,
     val overview: String?,
     val popularity: Double?,
     val poster_path: String?,
